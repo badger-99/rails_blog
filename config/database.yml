@@ -1,0 +1,22 @@
+# PostgreSQL. Versions 9.3 and up are supported.
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= Rails.application.credentials.postgres[:username] %>
+  password: <%= Rails.application.credentials.postgres[:password] %>
+  host: localhost
+  port: 5432
+
+development:
+  <<: *default
+  database: rails_blog
+
+test:
+  <<: *default
+  database: rails_blog_test
+
+production:
+  <<: *default
+  database: rails_blog
