@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe 'validators' do
-    subject { User.new(name: 'name', photo: 'www.selfie.pic', bio: 'bio') }
-    before { subject.save }
+    subject { User.create(name: 'name', photo: 'www.selfie.pic', bio: 'bio') }
 
     it 'should be invalid without a name' do
       subject.name = nil
