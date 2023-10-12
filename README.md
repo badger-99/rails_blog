@@ -138,7 +138,7 @@ You can deploy this project on Heroku, or any other hosting service of your chos
 - X: [@AlfredMkg](https://twitter.com/AlfredMkg)
 - LinkedIn: [in/alfredmkg](https://www.linkedin.com/in/alfredmkg))
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🔭 Future Features <a name="future-features"></a>
 

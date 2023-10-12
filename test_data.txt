@@ -1,0 +1,24 @@
+first_user = User.create(name: 'Gabriella', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Italy.')
+second_user = User.create(name: 'Akari', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Japan.')
+third_user = User.create(name: 'Elena', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Cyprus.')
+fourth_user = User.create(name: 'Camila', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from USA.')
+
+
+first_post = Post.create(author_id: User.first.id, title: 'Hello', text: 'This is my first post')
+second_post = Post.create(author_id: User.first.id, title: 'Hello there', text: 'This is my second post')
+third_post = Post.create(author_id: User.first.id, title: 'Hello again', text: 'This is my third post')
+fourth_post = Post.create(author_id: User.first.id, title: 'Another hello', text: 'This is my fourth post')
+
+
+Comment.create(post_id: Post.first.id, user_id: User.ids[0], text: 'Konichiwaaa!!!' )
+Comment.create(post_id: Post.first.id, user_id: User.ids[1], text: 'Giasu Gabriella-mou' )
+Comment.create(post_id: Post.first.id, user_id: User.ids[2], text: 'Howdy!!! :))' )
+Comment.create(post_id: Post.first.id, user_id: User.first.id, text: 'Hey guys! Thanks for commenting!' )
+Comment.create(post_id: Post.first.id, user_id: User.ids[2], text: 'I love your work!' )
+Comment.create(post_id: Post.first.id, user_id: User.ids[0], text: 'Same! All my firends love reading about Italy' )
+Comment.create(post_id: Post.first.id, user_id: User.ids[1], text: "I will be visiting Italy next week, can't wait!!!" )
+
+
+Like.create(post_id: Post.first.id , user_id:User.ids[1] )
+Like.create(post_id: Post.first.id , user_id:User.ids[2] )
+Like.create(post_id: Post.first.id , user_id:User.ids[0] )
