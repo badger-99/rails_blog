@@ -1,7 +1,7 @@
 class Comment < ApplicationRecord
-  belonge_to :user
-  belonge_to :post
-  before_create :increment_post_comment_count
+  belongs_to :user
+  belongs_to :post
+  after_create :increment_post_comment_count
 
   private
 
