@@ -1,12 +1,7 @@
 <h1>These are all the posts by <%=@user.name%></h1>
 
 <div>
-  <%# Intro card %>
-  <div>
-    <img src="<%= @user.photo%>"/>
-    <h3><%= @user.name%></h3>
-    <p>Number of posts: <%= @user.posts_counter%></P>
-  </div>
+<%= render partial: 'user', locals: { user: @user } %>
 
   <%# bio card %>
   <div>
