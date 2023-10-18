@@ -1,4 +1,4 @@
-<h1>This is <%=@user.name%>'s bio.</h1>
+<h1 class='title'><%=@user.name%>'s Profile</h1>
 <div>
   <%# Intro card %>
   <%= render partial: 'user', locals: { user: @user } %>
