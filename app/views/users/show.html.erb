@@ -10,7 +10,7 @@
     <%# Post Summary %>
     <div class='bioPostList'>
       <%if @posts.count > 0%>
-        <% @posts.each do |post| %>
+        <% @user.recent_posts.each do |post| %>
           <%= render partial: 'post', locals: { user: @user, post: post } %>
         <%end%>
         <button id='showPostsButton' type='button'><a href="/users/<%=@user.id%>/posts">See all posts</a></button>
