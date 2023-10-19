@@ -10,21 +10,25 @@
 
     <%# Posts %>
     <div class='indexPostList'>
-      <% @posts.each do |post| %>
-        <div class='indexPost'>
-          <%# Post summary %>
-          <%= render partial: 'post', locals: { user: @user, post: post } %>
+      <%if @posts.count > 0%>
+        <% @posts.each do |post| %>
+          <div class='indexPost'>
+            <%# Post summary %>
+            <%= render partial: 'post', locals: { user: @user, post: post } %>
 
-          <%# Recent Coments %>
-          <ul class='comments'>
-            <% post.recent_comments.each do |comment| %>
-              <%commentor = @users.find(comment.user_id)%>
-                <li><%=commentor.name%>: <%=comment.text%></li>
-              <%end%>
-          </ul>
-        </div>
-      <%end%>  
-    </div>
+            <%# Recent Coments %>
+            <ul class='comments'>
+              <% post.recent_comments.each do |comment| %>
+                <%commentor = @users.find(comment.user_id)%>
+                  <li><%=commentor.name%>: <%=comment.text%></li>
+                <%end%>
+            </ul>
+          </div>
+        <%end%>  
+      </div>
+      <%else%>
+        <h2 class='noPosts'><%=@user.name%> has no posts</h2>
+      <%end%>
   </div>
   <%= will_paginate @posts %>
 </section>

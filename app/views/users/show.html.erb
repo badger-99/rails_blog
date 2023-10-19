@@ -9,10 +9,14 @@
 
     <%# Post Summary %>
     <div class='bioPostList'>
-      <% @posts.each do |post| %>
-      <%= render partial: 'post', locals: { user: @user, post: post } %>
+      <%if @posts.count > 0%>
+        <% @posts.each do |post| %>
+        <%= render partial: 'post', locals: { user: @user, post: post } %>
+        <%end%>
+        <button id='showPostsButton' type='button'><a href="/users/<%=@user.id%>/posts">See all posts</a></button>
+      </div>
+      <%else%>
+        <h2 class='noPosts'><%=@user.name%> has no posts</h2>
       <%end%>
-      <button id='showPostsButton' type='button'><a href="/users/<%=@user.id%>/posts">See all posts</a></button>
-    </div>
   </div>
 </section>
