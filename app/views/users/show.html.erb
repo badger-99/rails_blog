@@ -1,17 +1,18 @@
-<h1 class='title'>Profile</h1>
-<div class='userProfile'>
-  <%# Intro card %>
-  <%= render partial: 'user', locals: { user: @user } %>
+<section id='profile'>
+  <h1 class='title'>Profile</h1>
+  <div class='userProfile'>
+    <%# Intro card %>
+    <%= render partial: 'user', locals: { user: @user } %>
 
-  <%# bio card %>
-  <%= render partial: 'bio', locals: { user: @user } %>
+    <%# bio card %>
+    <%= render partial: 'bio', locals: { user: @user } %>
 
-  <%# Posts %>
-  <div class='bioPostList'>
-    <% @posts.each do |post| %>
-    <%= render partial: 'post', locals: { user: @user, post: post } %>
-    <%end%>
-    <button id='showPostsButton' type='button'><a href="/users/<%=@user.id%>/posts">See all posts</a></button>
+    <%# Post Summary %>
+    <div class='bioPostList'>
+      <% @posts.each do |post| %>
+      <%= render partial: 'post', locals: { user: @user, post: post } %>
+      <%end%>
+      <button id='showPostsButton' type='button'><a href="/users/<%=@user.id%>/posts">See all posts</a></button>
+    </div>
   </div>
-
-</div>
+</section>

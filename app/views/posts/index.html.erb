@@ -1,28 +1,30 @@
-<h1 class='title'>Posts</h1>
+<section id='posts'>
+  <h1 class='title'>Posts</h1>
 
-<div>
-  <%# User Card %>
-<%= render partial: 'user', locals: { user: @user } %>
+  <div>
+    <%# User Card %>
+  <%= render partial: 'user', locals: { user: @user } %>
 
-  <%# Bio Card %>
-<%= render partial: 'bio', locals: { user: @user } %>
+    <%# Bio Card %>
+  <%= render partial: 'bio', locals: { user: @user } %>
 
-  <%# Posts %>
-  <div class='indexPostList'>
-    <% @posts.each do |post| %>
-      <div class='indexPost'>
-        <%# Post summary %>
-        <%= render partial: 'post', locals: { user: @user, post: post } %>
+    <%# Posts %>
+    <div class='indexPostList'>
+      <% @posts.each do |post| %>
+        <div class='indexPost'>
+          <%# Post summary %>
+          <%= render partial: 'post', locals: { user: @user, post: post } %>
 
-        <%# Recent Coments %>
-        <ul class='comments'>
-          <% post.recent_comments.each do |comment| %>
-            <%commentor = @users.find(comment.user_id)%>
-              <li><%=commentor.name%>: <%=comment.text%></li>
-            <%end%>
-        </ul>
-      </div>
-    <%end%>  
+          <%# Recent Coments %>
+          <ul class='comments'>
+            <% post.recent_comments.each do |comment| %>
+              <%commentor = @users.find(comment.user_id)%>
+                <li><%=commentor.name%>: <%=comment.text%></li>
+              <%end%>
+          </ul>
+        </div>
+      <%end%>  
+    </div>
   </div>
-</div>
-<%= will_paginate @posts %>
+  <%= will_paginate @posts %>
+</section>
