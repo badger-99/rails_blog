@@ -1,6 +1,6 @@
 <section id='article'>
   <h1 class= 'title'>Article</h1>
-  
+
   <div class='articlePage'>
 
     <div class='articleText'>
@@ -9,11 +9,15 @@
       <p><%=@post.text%></p>
     </div>
 
-    <ul class='comments'>
-      <% @comments.each do |comment| %>
-        <%commentor = @users.find(comment.user_id)%>
-          <li><%=commentor.name%>: <%=comment.text%></P>
-      <%end%>
-    </ul>
+    <%if @comments.count > 0%>
+      <ul class='comments'>
+        <% @comments.each do |comment| %>
+          <%commentor = @users.find(comment.user_id)%>
+            <li><%=commentor.name%>: <%=comment.text%></P>
+        <%end%>
+      </ul>
+    <%else%>
+      <h4 class='noComments'>Be the first to comment</h4>
+    <%end%>
   </div>
 </section>
