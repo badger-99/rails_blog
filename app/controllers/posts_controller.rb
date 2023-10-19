@@ -6,7 +6,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user_id])
     @users = User.select(:id, :name)
     @post = Post.find(params[:post_id])
     @comments = Comment.where(post_id: params[:post_id]).order(created_at: :asc)
