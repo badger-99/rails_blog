@@ -7,11 +7,11 @@
   <%= render partial: 'bio', locals: { user: @user } %>
 
   <%# Posts %>
-  <div class='postList'>
+  <div class='bioPostList'>
     <% @posts.each do |post| %>
     <%= render partial: 'post', locals: { user: @user, post: post } %>
-  <%end%>
-  <button id='showPostsButton' type='button'><a href="/users/<%=@user.id%>/posts">See all posts</a></button>
+    <%end%>
+    <button id='showPostsButton' type='button'><a href="/users/<%=@user.id%>/posts">See all posts</a></button>
   </div>
 
 </div>

@@ -1,20 +1,28 @@
 <h1 class='title'><%=@user.name%>'s Posts.</h1>
 
 <div>
+  <%# User Card %>
 <%= render partial: 'user', locals: { user: @user } %>
 
-  <%# bio card %>
+  <%# Bio Card %>
 <%= render partial: 'bio', locals: { user: @user } %>
 
   <%# Posts %>
-  <% @posts.each do |post| %>
-    <div>
-      <%= render partial: 'post', locals: { user: @user, post: post } %>
+  <div class='indexPostList'>
+    <% @posts.each do |post| %>
+      <div class='indexPost'>
+        <%# Post summary %>
+        <%= render partial: 'post', locals: { user: @user, post: post } %>
 
-      <%# Coments %>
-      <% post.recent_comments.each do |comment| %>
-      <%commentor = @users.find(comment.user_id)%>
-        <ul>
-          <li><%=commentor.name%>: <%=comment.text%></P>
+        <%# Recent Coments %>
+        <ul class='recentComments'>
+          <% post.recent_comments.each do |comment| %>
+            <%commentor = @users.find(comment.user_id)%>
+              <li><%=commentor.name%>: <%=comment.text%></li>
+            <%end%>
         </ul>
+      </div>
+    <%end%>  
+  </div>
+</div>
 <%= will_paginate @posts %>
