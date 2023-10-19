@@ -1,4 +1,4 @@
-<h1 class='title'><%=@user.name%>'s Posts.</h1>
+<h1 class='title'>Posts</h1>
 
 <div>
   <%# User Card %>
@@ -15,7 +15,7 @@
         <%= render partial: 'post', locals: { user: @user, post: post } %>
 
         <%# Recent Coments %>
-        <ul class='recentComments'>
+        <ul class='comments'>
           <% post.recent_comments.each do |comment| %>
             <%commentor = @users.find(comment.user_id)%>
               <li><%=commentor.name%>: <%=comment.text%></li>
