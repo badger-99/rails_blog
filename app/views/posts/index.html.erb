@@ -1,1 +1,38 @@
-<h1>These are all the posts by User <%=@user%></h1>
+<section id='posts'>
+  <h1 class='title'>Posts</h1>
+
+  <div>
+    <%# User Card %>
+    <%= render partial: 'user', locals: { user: @user } %>
+
+    <%# Bio Card %>
+    <%= render partial: 'bio', locals: { user: @user } %>
+
+    <%# Posts %>
+    <div class='indexPostList'>
+      <%if @posts.count > 0%>
+        <% @posts.each do |post| %>
+          <div class='indexPost'>
+            <%# Post summary %>
+            <%= render partial: 'post', locals: { user: @user, post: post } %>
+
+            <%# Recent Coments %>
+            <%if post.recent_comments.count > 0%>
+              <ul class='comments'>
+                <% post.recent_comments.each do |comment| %>
+                  <%commentor = @users.find(comment.user_id)%>
+                  <li><%=commentor.name%>: <%=comment.text%></li>
+                <%end%>
+              </ul>
+            <%else%>
+              <h4 class='noComments'>Be the first to comment</h4>
+            <%end%>
+          </div>
+        <%end%>  
+      <%else%>
+        <h2 class='noPosts'><%=@user.name%> has no posts</h2>
+      <%end%>
+    </div>  
+  </div>
+  <%= will_paginate @posts %>
+</section>
