@@ -13,7 +13,7 @@
       <ul class='comments'>
         <% @comments.each do |comment| %>
           <%commentor = @users.find(comment.user_id)%>
-            <li><%=commentor.name%>: <%=comment.text%></P>
+          <li><%=commentor.name%>: <%=comment.text%></P>
         <%end%>
       </ul>
     <%else%>

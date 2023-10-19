@@ -3,10 +3,10 @@
 
   <div>
     <%# User Card %>
-  <%= render partial: 'user', locals: { user: @user } %>
+    <%= render partial: 'user', locals: { user: @user } %>
 
     <%# Bio Card %>
-  <%= render partial: 'bio', locals: { user: @user } %>
+    <%= render partial: 'bio', locals: { user: @user } %>
 
     <%# Posts %>
     <div class='indexPostList'>
@@ -21,18 +21,18 @@
               <ul class='comments'>
                 <% post.recent_comments.each do |comment| %>
                   <%commentor = @users.find(comment.user_id)%>
-                    <li><%=commentor.name%>: <%=comment.text%></li>
-                  <%end%>
+                  <li><%=commentor.name%>: <%=comment.text%></li>
+                <%end%>
               </ul>
             <%else%>
               <h4 class='noComments'>Be the first to comment</h4>
             <%end%>
           </div>
         <%end%>  
-      </div>
       <%else%>
         <h2 class='noPosts'><%=@user.name%> has no posts</h2>
       <%end%>
+    </div>  
   </div>
   <%= will_paginate @posts %>
 </section>
