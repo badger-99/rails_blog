@@ -128,15 +128,29 @@
   gap: 2rem;
 }
 
-.recentComments{
+.comments{
   margin-top: 0.5rem;
   margin-left: 0.5rem;
   border: 2px solid black;
+  padding: 0.25rem 0.5rem 1rem;
 }
 
-.recentComments > li{
+.comments > li{
   list-style: none;
- }
+}
+
+.articlePage{
+  width: 55rem;
+  padding: 0.25rem 0.5rem 1rem;
+}
+
+.articleText{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.25rem 0.5rem 1rem;
+  border: 2px solid black;
+}
 
  /* Pagination styles */
 .pagination {

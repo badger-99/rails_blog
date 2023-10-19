@@ -1,13 +1,16 @@
 <h1 class= 'title'>Article</h1>
-  <h1 class= 'title'><%=@post.title%> by <%=@user.name%></h1>
+<div class='articlePage'>
 
-  <p><%=@post.text%></p>
+  <div class='articleText'>
+    <h3><%=@post.title%></h3>
+    <p class='postMetrics'>Comments: <%=@post.comments_counter%>, Likes: <%=@post.likes_counter%></p>
+    <p><%=@post.text%></p>
+  </div>
 
-  <% @comments.each do |comment| %>
+  <ul class='comments'>
+    <% @comments.each do |comment| %>
       <%commentor = @users.find(comment.user_id)%>
-        <ul>
-          <li><%=commentor.name%>: <%=comment.text%></P>
-        </ul>
-      <%end%>
-    </div>
+        <li><%=commentor.name%>: <%=comment.text%></P>
+     <%end%>
+  </ul>
 </div>
