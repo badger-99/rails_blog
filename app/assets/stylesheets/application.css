@@ -26,6 +26,7 @@
   justify-content: center;
   align-items: center;
   padding: 1rem 0 2rem;
+  background: rgb(254, 191, 108);
  }
 
  main{
@@ -53,7 +54,7 @@
   flex-direction: row;
   width: fit-content;
   gap: 2rem;
-  border: 2px solid black;
+  background: #ffffff5c;
   margin: 0 auto;
  }
 
@@ -67,7 +68,6 @@
   align-items: center;
   width: 25rem;
   justify-content: space-between;
-  border: 2px solid black;
   padding: 0.5rem;
 }
 
@@ -80,7 +80,7 @@
 }
 
 .bio{
-  border: 2px solid black;
+  background: #ffffff5c;
   width: 55rem;
   padding: 0.25rem 0.5rem 1rem;
   margin: 1rem 0 2rem;
@@ -98,7 +98,7 @@
 }
 
 .postCard{
-  border: 2px solid black;
+  background: #ffffff5c;
   width: 55rem;
   padding: 0.25rem 0.5rem 1rem;
 }
@@ -131,7 +131,7 @@
 .comments{
   margin-top: 0.5rem;
   margin-left: 0.5rem;
-  border: 2px solid black;
+  background: #ffffff5c;
   padding: 0.25rem 0.5rem 1rem;
 }
 
@@ -149,7 +149,7 @@
   flex-direction: column;
   gap: 1rem;
   padding: 0.25rem 0.5rem 1rem;
-  border: 2px solid black;
+  background: #ffffff5c;
 }
 
  /* Pagination styles */
