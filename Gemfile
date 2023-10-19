@@ -11,7 +11,6 @@ gem 'rails-controller-testing'
 
 gem 'will_paginate'
 
-
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
