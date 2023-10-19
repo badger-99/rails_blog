@@ -4,10 +4,7 @@
   <%= render partial: 'user', locals: { user: @user } %>
 
   <%# bio card %>
-  <div>
-    <h5>Bio</h5>
-    <p><%= @user.bio%></p>
-  </div>
+  <%= render partial: 'bio', locals: { user: @user } %>
 
   <%# Posts %>
   <% @posts.each do |post| %>
