@@ -8,6 +8,8 @@
     <%# Bio Card %>
     <%= render partial: 'bio', locals: { user: @user } %>
 
+    <h2 class='noPosts'><a href="/users/<%=@user.id%>/posts/new">Create a post</a></h2>
+    <br>
     <%# Posts %>
     <div class='indexPostList'>
       <%if @posts.count > 0%>
