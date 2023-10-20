@@ -30,6 +30,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comments = Comment.where(post_id: params[:post_id]).order(created_at: :asc)
     @comment = Comment.new
+    @like = Like.new
   end
 
   private
