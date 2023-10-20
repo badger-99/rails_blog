@@ -9,6 +9,20 @@
       <p><%=@post.text%></p>
     </div>
 
+    <%= form_with model: @like, url: "/users/#{@user.id}/posts/#{@post.id}/like_comment", local: true do |form|%>
+      <%= form.hidden_field :user_id, value: @user.id%>
+      <%= form.hidden_field :post_id, value: @post.id%>
+      <div class='actions'>
+        <%= form.submit 'Like'%>  
+      </div>
+
+      <% if flash[:error].present? %>
+        <div class="alert alert-danger">
+          <%= flash[:error] %>
+        </div>
+      <% end %>
+    <%end%>
+
     <%if @comments.count > 0%>
       <ul class='comments'>
         <% @comments.each do |comment| %>
