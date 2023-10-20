@@ -9,9 +9,9 @@
       <p><%=@post.text%></p>
     </div>
 
-    <%if @post.recent_comments.count > 0%>
+    <%if @comments.count > 0%>
       <ul class='comments'>
-        <% @post.recent_comments.each do |comment| %>
+        <% @comments.each do |comment| %>
           <%commentor = @users.find(comment.user_id)%>
           <li><%=commentor.name%>: <%=comment.text%></P>
         <%end%>
