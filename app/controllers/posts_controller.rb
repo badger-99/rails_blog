@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @user = User.find(params[:user_id])
+    @current_user = set_current_user
   end
 
   def create
