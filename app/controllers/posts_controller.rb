@@ -1,4 +1,21 @@
 class PostsController < ApplicationController
+  def new
+    @post = Post.new
+    @user = User.find(params[:user_id])
+  end
+
+  def create
+    @post = Post.new(post_params)
+    @user = User.find(params[:user_id])
+
+    if @post.save
+      redirect_to "/users/#{@user.id}/posts/#{@post.id}"
+    else
+      flash[:error] = 'There was an error saving the post.'
+      render 'new'
+    end
+  end
+
   def index
     @user = User.find(params[:user_id])
     @users = User.select(:id, :name)
@@ -9,5 +26,11 @@ class PostsController < ApplicationController
     @users = User.select(:id, :name)
     @post = Post.find(params[:post_id])
     @comments = Comment.where(post_id: params[:post_id]).order(created_at: :asc)
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :text, :author_id)
   end
 end
