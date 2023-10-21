@@ -17,6 +17,7 @@
       </div>
       <%else%>
         <h2 class='noPosts'><%=@user.name%> has no posts</h2>
+        <h2 class='noPosts'><a href="/users/<%=@user.id%>/posts/new">Create a post</a></h2>
       <%end%>
   </div>
 </section>

@@ -1,0 +1,23 @@
+<%= form_with model: @post, url: "/users/#{@user.id}/posts/create", local: true do |form|%>
+  <div class='field'>
+    <%= form.label :title%>
+    <%= form.text_field :title%>
+  </div>
+
+  <div class='field'>
+    <%= form.label :text%>
+    <%= form.text_area :text, size: '100x25'%>
+  </div>
+
+  <%= form.hidden_field :author_id, value: @current_user.id%>
+
+  <div class='actions'>
+    <%= form.submit 'Create Post'%>
+  </div>
+
+  <% if flash[:error].present? %>
+    <div class="alert alert-danger">
+      <%= flash[:error] %>
+    </div>
+  <% end %>
+<%end%>

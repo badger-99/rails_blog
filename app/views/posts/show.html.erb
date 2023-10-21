@@ -8,16 +8,22 @@
       <p class='postMetrics'>Comments: <%=@post.comments_counter%>, Likes: <%=@post.likes_counter%></p>
       <p><%=@post.text%></p>
     </div>
+    <br>
+    <%= render partial: 'like', locals: { like: @like, user: @user, post: @post } %>
 
-    <%if @post.recent_comments.count > 0%>
+    <%if @comments.count > 0%>
       <ul class='comments'>
-        <% @post.recent_comments.each do |comment| %>
+        <% @comments.each do |comment| %>
           <%commentor = @users.find(comment.user_id)%>
           <li><%=commentor.name%>: <%=comment.text%></P>
         <%end%>
       </ul>
+      <br>
+      <%= render partial: 'comment', locals: { comment: @comment, current_user: @current_user, post: @post } %>
     <%else%>
       <h4 class='noComments'>Be the first to comment</h4>
+      <br>
+      <%= render partial: 'comment', locals: { comment: @comment, current_user: @current_user, post: @post } %>
     <%end%>
   </div>
 </section>
