@@ -27,3 +27,36 @@ RSpec.feature 'Author and Post Info in Post Index Page', type: :feature do
     expect(page).to have_no_content(@post2.text)
   end
 end
+
+RSpec.feature 'Comments and Likes counter on a post in the Post Index Page', type: :feature do
+  before(:each) do
+    @user = User.create(name: 'name1', photo: 'www.selfie1.pic', bio: 'bio1')
+    @commentor = User.create(name: 'name2', photo: 'www.selfie.pic2', bio: 'bio2')
+    @post = Post.create(title: 'Title 2', text: 'Post number 2 content.', author_id: @user.id)
+    Like.create(user_id: @user.id, post_id: @post.id)
+    Like.create(user_id: @commentor.id, post_id: @post.id)
+    @comment1 = Comment.create(text: 'comment1', user_id: @commentor.id, post_id: @post.id)
+    @comment2 = Comment.create(text: 'comment2', user_id: @commentor.id, post_id: @post.id)
+    @comment3 = Comment.create(text: 'comment3', user_id: @commentor.id, post_id: @post.id)
+    @comment4 = Comment.create(text: 'comment4', user_id: @commentor.id, post_id: @post.id)
+    @comment5 = Comment.create(text: 'comment5', user_id: @commentor.id, post_id: @post.id)
+    @comment6 = Comment.create(text: 'comment6', user_id: @commentor.id, post_id: @post.id)
+    @post.reload
+    visit "/users/#{@user.id}/posts"
+  end
+
+  describe 'recent comments, comment counter, likes counter' do
+    it 'should show 5 most recent comments, comment counter, and likes counter' do
+      @post_with_comments = find('.indexPost')
+      result_comments = [@comment6.text, @comment5.text, @comment4.text, @comment3.text, @comment2.text]
+
+      result_comments.each do |comment|
+        expect(@post_with_comments).to have_content(comment)
+      end
+
+      expect(@post_with_comments).to have_no_content(@comment1.text)
+      expect(@post_with_comments).to have_content("Comments: #{@post.comments_counter}")
+      expect(@post_with_comments).to have_content("Likes: #{@post.likes_counter}")
+    end
+  end
+end
