@@ -45,19 +45,17 @@ RSpec.feature 'Comments and Likes counter on a post in the Post Index Page', typ
     visit "/users/#{@user.id}/posts"
   end
 
-  describe 'recent comments, comment counter, likes counter' do
-    it 'should show 5 most recent comments, comment counter, and likes counter' do
-      @post_with_comments = find('.indexPost')
-      result_comments = [@comment6.text, @comment5.text, @comment4.text, @comment3.text, @comment2.text]
+  it 'should show 5 most recent comments, comment counter, and likes counter' do
+    @post_with_comments = find('.indexPost')
+    result_comments = [@comment6.text, @comment5.text, @comment4.text, @comment3.text, @comment2.text]
 
-      result_comments.each do |comment|
-        expect(@post_with_comments).to have_content(comment)
-      end
-
-      expect(@post_with_comments).to have_no_content(@comment1.text)
-      expect(@post_with_comments).to have_content("Comments: #{@post.comments_counter}")
-      expect(@post_with_comments).to have_content("Likes: #{@post.likes_counter}")
+    result_comments.each do |comment|
+      expect(@post_with_comments).to have_content(comment)
     end
+
+    expect(@post_with_comments).to have_no_content(@comment1.text)
+    expect(@post_with_comments).to have_content("Comments: #{@post.comments_counter}")
+    expect(@post_with_comments).to have_content("Likes: #{@post.likes_counter}")
   end
 end
 
@@ -70,21 +68,18 @@ RSpec.feature 'Pagination links in the Post Index Page', type: :feature do
     @post4 = Post.create(title: 'Title 4', text: 'Post number 4 content.', author_id: @user.id)
   end
 
-  describe 'Pagination links in the first page' do
-    it 'should show active links to page2 and next' do
-      visit "/users/#{@user.id}/posts"
-      expect(page).to have_link('2', href: "/users/#{@user.id}/posts?page=2")
-      expect(page).to have_link('Next →', href: "/users/#{@user.id}/posts?page=2")
-    end
+  it 'should show active links to page2 and next' do
+    visit "/users/#{@user.id}/posts"
+    expect(page).to have_link('2', href: "/users/#{@user.id}/posts?page=2")
+    expect(page).to have_link('Next →', href: "/users/#{@user.id}/posts?page=2")
   end
 
-  describe 'Pagination links in the second page' do
-    it 'should show active links to page1 and next' do
-      visit "/users/#{@user.id}/posts?page=2"
-      expect(page).to have_link('1', href: "/users/#{@user.id}/posts?page=1")
-      expect(page).to have_link('← Previous', href: "/users/#{@user.id}/posts?page=1")
-    end
+  it 'should show active links to page1 and next' do
+    visit "/users/#{@user.id}/posts?page=2"
+    expect(page).to have_link('1', href: "/users/#{@user.id}/posts?page=1")
+    expect(page).to have_link('← Previous', href: "/users/#{@user.id}/posts?page=1")
   end
+
 end
 
 RSpec.feature 'Links to main Post page from the Post Index Page', type: :feature do
@@ -95,10 +90,8 @@ RSpec.feature 'Links to main Post page from the Post Index Page', type: :feature
     visit "/users/#{@user.id}/posts"
   end
 
-  describe 'Links to main post page' do
-    it 'should Link to the main post page' do
-      expect(page).to have_link(@post1.title, href: "/users/#{@user.id}/posts/#{@post1.id}")
-      expect(page).to have_link(@post2.title, href: "/users/#{@user.id}/posts/#{@post2.id}")
-    end
+  it 'should Link to the main post page' do
+    expect(page).to have_link(@post1.title, href: "/users/#{@user.id}/posts/#{@post1.id}")
+    expect(page).to have_link(@post2.title, href: "/users/#{@user.id}/posts/#{@post2.id}")
   end
 end
