@@ -34,3 +34,22 @@ RSpec.feature 'User Index Page Elements', type: :feature do
     end
   end
 end
+
+RSpec.feature 'User Index Page links', type: :feature do
+    describe 'each user name contains a link to their profile page' do
+      before(:each) do
+        @user1 = User.create(name: 'name1', photo: 'www.selfie1.pic', bio: 'bio1', posts_counter: 2)
+        @user2 = User.create(name: 'name2', photo: 'www.selfie2.pic', bio: 'bio2', posts_counter: 4)
+        @user3 = User.create(name: 'name3', photo: 'www.selfie3.pic', bio: 'bio3', posts_counter: 6)
+        @user4 = User.create(name: 'name4', photo: 'www.selfie4.pic', bio: 'bio4', posts_counter: 8)
+        visit '/users'
+      end
+  
+      it 'should link each user name to their profile page' do
+        expect(page).to have_link(@user1.name, href: "/users/#{@user1.id}")
+        expect(page).to have_link(@user2.name, href: "/users/#{@user2.id}")
+        expect(page).to have_link(@user3.name, href: "/users/#{@user3.id}")
+        expect(page).to have_link(@user4.name, href: "/users/#{@user4.id}")
+      end
+    end
+  end
