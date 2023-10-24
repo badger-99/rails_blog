@@ -86,3 +86,19 @@ RSpec.feature 'Pagination links in the Post Index Page', type: :feature do
     end
   end
 end
+
+RSpec.feature 'Links to main Post page from the Post Index Page', type: :feature do
+  before(:each) do
+    @user = User.create(name: 'name1', photo: 'www.selfie1.pic', bio: 'bio1')
+    @post1 = Post.create(title: 'Title 1', text: 'Post number 1 content.', author_id: @user.id)
+    @post2 = Post.create(title: 'Title 2', text: 'Post number 2 content.', author_id: @user.id)
+    visit "/users/#{@user.id}/posts"
+  end
+
+  describe 'Links to main post page' do
+    it 'should Link to the main post page' do
+      expect(page).to have_link(@post1.title, href: "/users/#{@user.id}/posts/#{@post1.id}")
+      expect(page).to have_link(@post2.title, href: "/users/#{@user.id}/posts/#{@post2.id}")
+    end
+  end
+end
