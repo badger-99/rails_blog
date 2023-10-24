@@ -79,7 +79,6 @@ RSpec.feature 'Pagination links in the Post Index Page', type: :feature do
     expect(page).to have_link('1', href: "/users/#{@user.id}/posts?page=1")
     expect(page).to have_link('← Previous', href: "/users/#{@user.id}/posts?page=1")
   end
-
 end
 
 RSpec.feature 'Links to main Post page from the Post Index Page', type: :feature do
