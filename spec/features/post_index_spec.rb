@@ -60,3 +60,29 @@ RSpec.feature 'Comments and Likes counter on a post in the Post Index Page', typ
     end
   end
 end
+
+RSpec.feature 'Pagination links in the Post Index Page', type: :feature do
+  before(:each) do
+    @user = User.create(name: 'name1', photo: 'www.selfie1.pic', bio: 'bio1')
+    @post1 = Post.create(title: 'Title 1', text: 'Post number 1 content.', author_id: @user.id)
+    @post2 = Post.create(title: 'Title 2', text: 'Post number 2 content.', author_id: @user.id)
+    @post3 = Post.create(title: 'Title 3', text: 'Post number 3 content.', author_id: @user.id)
+    @post4 = Post.create(title: 'Title 4', text: 'Post number 4 content.', author_id: @user.id)
+  end
+
+  describe 'Pagination links in the first page' do
+    it 'should show active links to page2 and next' do
+      visit "/users/#{@user.id}/posts"
+      expect(page).to have_link('2', href: "/users/#{@user.id}/posts?page=2")
+      expect(page).to have_link('Next →', href: "/users/#{@user.id}/posts?page=2")
+    end
+  end
+
+  describe 'Pagination links in the second page' do
+    it 'should show active links to page1 and next' do
+      visit "/users/#{@user.id}/posts?page=2"
+      expect(page).to have_link('1', href: "/users/#{@user.id}/posts?page=1")
+      expect(page).to have_link('← Previous', href: "/users/#{@user.id}/posts?page=1")
+    end
+  end
+end
