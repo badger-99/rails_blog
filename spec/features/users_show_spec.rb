@@ -34,3 +34,27 @@ RSpec.feature 'User Show Page elements', type: :feature do
     end
   end
 end
+
+RSpec.feature 'User Index show links', type: :feature do
+    describe 'links to individual posts and all posts work' do
+      before(:each) do
+        @user = User.create(name: 'name1', photo: 'www.selfie1.pic', bio: 'bio1')
+        @post1 = Post.create(title: 'Title 1', text: 'Post number 1 content.', author_id: @user.id)
+        @post2 = Post.create(title: 'Title 2', text: 'Post number 2 content.', author_id: @user.id)
+        @post3 = Post.create(title: 'Title 3', text: 'Post number 3 content.', author_id: @user.id)
+        @post4 = Post.create(title: 'Title 4', text: 'Post number 4 content.', author_id: @user.id)
+        visit "/users/#{@user.id}"
+      end
+  
+      it 'should have a link redirecting to a page where you can see all posts' do
+        expect(page).to have_link('See all posts', href: "/users/#{@user.id}/posts")
+      end
+  
+      it "should have links on each of the post titles that lead to that post's main page" do
+        expect(page).to have_link(@post2.title, href: "/users/#{@user.id}/posts/#{@post2.id}")
+        expect(page).to have_link(@post3.title, href: "/users/#{@user.id}/posts/#{@post3.id}")
+        expect(page).to have_link(@post4.title, href: "/users/#{@user.id}/posts/#{@post4.id}")
+        expect(page).to have_no_link(@post1.title, href: "/users/#{@user.id}/posts/#{@post1.id}")
+      end
+    end
+  end
