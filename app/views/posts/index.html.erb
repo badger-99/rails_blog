@@ -19,11 +19,11 @@
             <%= render partial: 'post', locals: { user: @user, post: post } %>
 
             <%# Recent Coments %>
-            <%if post.recent_comments.count > 0%>
+            <% @comments = Comment.includes(:user).where(post_id: post.id).order(created_at: :desc).limit(5)%>
+            <%if @comments.size > 0%>
               <ul class='comments'>
-                <% post.recent_comments.each do |comment| %>
-                  <%commentor = @users.find(comment.user_id)%>
-                  <li><%=commentor.name%>: <%=comment.text%></li>
+                <% @comments.each do |comment| %>
+                  <li><%=comment.user.name%>: <%=comment.text%></li>
                 <%end%>
               </ul>
             <%else%>

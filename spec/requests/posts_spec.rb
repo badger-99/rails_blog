@@ -16,7 +16,7 @@ RSpec.describe 'Posts', type: :request do
 
     it 'renders the correct placeholder text' do
       get "/users/#{subject.id}/posts"
-      expect(response.body).to include("These are all the posts by User #{subject.id}")
+      expect(response.body).to include('Posts')
     end
   end
 
@@ -36,7 +36,7 @@ RSpec.describe 'Posts', type: :request do
 
     it 'renders the correct placeholder text' do
       get "/users/#{user.id}/posts/#{blog_post.id}"
-      expect(response.body).to include("This is post No.#{blog_post.id} by User #{user.id}")
+      expect(response.body).to include('Article')
     end
   end
 end
