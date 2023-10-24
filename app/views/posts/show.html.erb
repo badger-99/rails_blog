@@ -4,7 +4,7 @@
   <div class='articlePage'>
 
     <div class='articleText'>
-      <h3><%=@post.title%></h3>
+      <h3><%=@post.title%> by <a href="/users/<%=@user.id%>"><%=@user.name%></a></h3>
       <p class='postMetrics'>Comments: <%=@post.comments_counter%>, Likes: <%=@post.likes_counter%></p>
       <p><%=@post.text%></p>
     </div>
