@@ -6,9 +6,10 @@ class User < ApplicationRecord
   has_many :posts, foreign_key: 'author_id'
   has_many :likes
   has_many :comments
-
+  # this is some text
   validates :name, presence: true
   validates :email, presence: true
+  validates :encrypted_password, presence: true
   validates :posts_counter, comparison: { greater_than_or_equal_to: 0 }
 
   def recent_posts
