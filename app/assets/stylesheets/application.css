@@ -20,7 +20,7 @@
   box-sizing: border-box;
 }
 
-body, main, .login{
+body, main, .login, .sign_up{
   display: flex;
   flex-direction: column;
   justify-content: center;
