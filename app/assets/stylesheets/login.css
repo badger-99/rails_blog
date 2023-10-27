@@ -1,17 +1,17 @@
 /* login styles */
 
-.login{
+.login {
   margin: 4rem 0;
   padding: 0.5rem;
   width: fit-content;
 }
 
-.login_field{
+.login_field {
   margin-bottom: 1.5rem;
   width: 25rem;
 }
 
-.login_field > input{
+.login_field > input {
   width: 100%;
   padding: 0.25rem;
 }
@@ -20,16 +20,16 @@
   margin-bottom: 0.25rem;
 }
 
-.login_checkbox{
+.login_checkbox {
   align-self: flex-start;
 }
 
-.login_button{
+.login_button {
   margin-top: 2rem;
   width: 7.5rem;
 }
 
-.login_button > input{
+.login_button > input {
   width: 100%;
   padding: 0.25rem;
   font-size: 1rem;

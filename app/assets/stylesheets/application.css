@@ -20,7 +20,11 @@
   box-sizing: border-box;
 }
 
-body, main, .login, .sign_up, .delete{
+body,
+main,
+.sign_up,
+.login,
+.delete {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -42,7 +46,7 @@ main {
   margin-bottom: 0.5rem;
 }
 
-.topBar{
+.topBar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -60,7 +64,7 @@ a:hover {
   color: rgb(214, 68, 6);
 }
 
-.shared_links{
+.shared_links {
   margin: 0.25rem 0;
 }
 
