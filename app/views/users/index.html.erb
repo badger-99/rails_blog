@@ -1,5 +1,15 @@
 <section id='users'>
   <h1 class='title'>Users</h1>
+  <div class='topBar'>
+    <% if user_signed_in? %>
+      <span>Welcome, <%= current_user.name %>!</span>
+      <span><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></span>
+      <!-- Display other user information -->
+    <% else %>
+      <span><%= link_to "Sign In", new_user_session_path %></span>
+      <span><%= link_to "Sign Up", new_user_registration_path %></span>
+    <% end %>
+  </div>
   <div class='userList'>
     <% @users.each do |user| %>
     <%= render partial: 'user', locals: { user: user } %>
