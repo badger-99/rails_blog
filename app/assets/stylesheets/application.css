@@ -20,7 +20,7 @@
   box-sizing: border-box;
 }
 
-body, main, .login, .sign_up{
+body, main, .login, .sign_up, .delete{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -57,7 +57,7 @@ a {
 }
 
 a:hover {
-  color: rgb(207, 81, 3);
+  color: rgb(214, 68, 6);
 }
 
 .shared_links{
