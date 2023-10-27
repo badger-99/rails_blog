@@ -1,0 +1,55 @@
+/* registration styles */
+.registration {
+  margin: 2rem 0 4rem;
+  padding: 0.5rem;
+  width: fit-content;
+}
+
+.sign_up_instructions {
+  margin-top: 1rem;
+}
+
+.registration_field {
+  margin-bottom: 1.5rem;
+  width: 25rem;
+}
+
+.registration_field > input,
+.registration_field > textarea {
+  width: 100%;
+  padding: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.registration_button {
+  width: 7.5rem;
+}
+
+.registration_button > input {
+  width: 100%;
+  padding: 0.25rem;
+  font-size: 1rem;
+}
+
+.delete {
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.delete > h3 {
+  font-size: 1.5rem;
+}
+
+.delete button {
+  background: red;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.delete button:hover {
+  background: rgb(29, 6, 6);
+  color: red;
+  cursor: pointer;
+}

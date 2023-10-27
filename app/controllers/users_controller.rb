@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, except: :index
+
   def index
     @users = User.order(created_at: :asc)
   end

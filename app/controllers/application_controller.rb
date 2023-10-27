@@ -1,13 +1,15 @@
 class ApplicationController < ActionController::Base
-  # before_action :set_current_user
+  protect_from_forgery with: :exception
+  before_action :authenticate_user!
+  before_action :set_current_user
+  before_action :configure_registration_parameters, if: :devise_controller?
 
-  def set_current_user
-    @current_user = current_user
-  end
+  protected
 
-  private
-
-  def current_user
-    @_current_user = User.first
+  def configure_registration_parameters
+    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:name, :email, :password, :bio) }
+    devise_parameter_sanitizer.permit(:account_update) do |u|
+      u.permit(:name, :email, :bio, :password, :current_password)
+    end
   end
 end
