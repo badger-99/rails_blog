@@ -20,17 +20,19 @@
   box-sizing: border-box;
 }
 
-body {
+body, main, .login{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+body {
   padding: 1rem 0 2rem;
   background: rgb(254, 191, 108);
 }
 
 main {
-  position: relative;
   width: 100%;
   padding: 2rem;
 }
