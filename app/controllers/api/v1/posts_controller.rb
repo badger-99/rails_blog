@@ -5,6 +5,13 @@ class Api::V1::PostsController < JSONAPI::ResourceController
     posts = user.posts # Get all posts by the user
     render json: posts, status: :ok
   end
+
+  def comments
+    post = Post.find(params[:id]) # Find the post by post_id parameter
+    comments = post.comments # Get all comments for the post
+    render json: comments, status: :ok
+  end
+  
   private
 
   def set_json_api_content_type
