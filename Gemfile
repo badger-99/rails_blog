@@ -77,3 +77,5 @@ end
 gem 'devise', '~> 4.9'
 
 gem 'jsonapi-resources'
+
+gem 'rswag'
