@@ -7,16 +7,15 @@ class Api::V1::PostsController < JSONAPI::ResourceController
   end
 
   def comments
-    post = Post.find(params[:id]) 
-    comments = post.comments 
+    post = Post.find(params[:id])
+    comments = post.comments
     render json: comments, status: :ok
   end
 
   def add_comment
-    post = Post.find(params[:post_id]) 
-    user = current_user 
+    post = Post.find(params[:post_id])
+    user = current_user
 
-   
     comment = Comment.new(comment_params)
     comment.user_id = user.id
     comment.post_id = post.id
