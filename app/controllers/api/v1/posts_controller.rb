@@ -13,13 +13,13 @@ class Api::V1::PostsController < JSONAPI::ResourceController
   end
 
   def add_comment
-    post = Post.find(params[:post_id]) # Find the post by post_id parameter
-    user = current_user # Retrieve the currently signed-in user
+    post = Post.find(params[:post_id]) 
+    user = current_user 
 
-    # Create a new comment with the user's ID
+   
     comment = Comment.new(comment_params)
     comment.user_id = user.id
-    comment.post_id = post.id # Set the post_id to associate the comment with the post
+    comment.post_id = post.id
 
     if comment.save
       render json: comment, status: :created
@@ -27,7 +27,7 @@ class Api::V1::PostsController < JSONAPI::ResourceController
       render json: comment.errors, status: :unprocessable_entity
     end
   end
-  
+
   private
 
   def set_json_api_content_type
