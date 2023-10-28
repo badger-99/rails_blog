@@ -19,11 +19,11 @@
         <%end%>
       </ul>
       <br>
-      <%= render partial: 'comment', locals: { comment: @comment, current_user: @current_user, post: @post } %>
+      <%= render partial: 'comment', locals: { comment: @comment, current_user: current_user, post: @post } %>
     <%else%>
       <h4 class='noComments'>Be the first to comment</h4>
       <br>
-      <%= render partial: 'comment', locals: { comment: @comment, current_user: @current_user, post: @post } %>
+      <%= render partial: 'comment', locals: { comment: @comment, current_user: current_user, post: @post } %>
     <%end%>
   </div>
 </section>

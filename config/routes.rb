@@ -4,6 +4,21 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
     get '/users/password' => 'devise/passwords#update'
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :posts do
+        collection do
+          get 'user/:user_id', action: 'user', as: 'user'
+        end
+      member do
+        get 'comments', as: 'comments'
+        post 'add_comment'
+      end
+      end
+    end
+  end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # resources :users
   get '/users', to: 'users#index'
