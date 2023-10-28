@@ -7,11 +7,11 @@ class Api::V1::PostsController < JSONAPI::ResourceController
   end
 
   def comments
-    post = Post.find(params[:id]) # Find the post by post_id parameter
-    comments = post.comments # Get all comments for the post
+    post = Post.find(params[:id]) 
+    comments = post.comments 
     render json: comments, status: :ok
   end
-  
+
   private
 
   def set_json_api_content_type
