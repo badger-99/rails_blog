@@ -2,7 +2,6 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @user = User.find(params[:user_id])
-    @current_user = set_current_user
   end
 
   def create
@@ -25,7 +24,6 @@ class PostsController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @users = User.select(:id, :name)
-    @current_user = set_current_user
     @post = Post.find(params[:post_id])
     @comments = Comment.where(post_id: params[:post_id]).order(created_at: :asc)
     @comment = Comment.new
