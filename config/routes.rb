@@ -11,6 +11,10 @@ Rails.application.routes.draw do
         collection do
           get 'user/:user_id', action: 'user', as: 'user'
         end
+      member do
+        get 'comments', as: 'comments'
+        post 'add_comment'
+      end
       end
     end
   end
