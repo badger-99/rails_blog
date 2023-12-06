@@ -1,0 +1,105 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/posts/user/{user_id}":
+    get:
+      summary: Retrieves all posts by a user
+      tags:
+      - Posts
+      parameters:
+      - name: user_id
+        in: path
+        description: User ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/vnd.api+json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    text:
+                      type: string
+                    created_at:
+                      type: string
+                      format: date-time
+                    updated_at:
+                      type: string
+                      format: date-time
+                    comments_counter:
+                      type: integer
+                    likes_counter:
+                      type: integer
+                    author_id:
+                      type: integer
+        '404':
+          description: user not found
+  "/api/v1/posts/{id}/comments":
+    get:
+      summary: Retrieves comments for a post
+      tags:
+      - Comments
+      parameters:
+      - name: id
+        in: path
+        description: Post ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/vnd.api+json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    text:
+                      type: string
+        '404':
+          description: post not found
+    post:
+      summary: Creates a new comment
+      tags:
+      - Comments
+      parameters:
+      - name: id
+        in: path
+        description: Post ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: created
+        4xx:
+          description: unprocessable entity
+      requestBody:
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com

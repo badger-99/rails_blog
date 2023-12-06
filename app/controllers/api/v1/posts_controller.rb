@@ -9,7 +9,7 @@ class Api::V1::PostsController < JSONAPI::ResourceController
   def comments
     post = Post.find(params[:id])
     comments = post.comments
-    render json: comments, status: :ok
+    render json: comments, only: %i[id title text comments_counter author_id], status: :ok
   end
 
   def add_comment
